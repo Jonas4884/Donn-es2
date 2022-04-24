@@ -36,3 +36,5 @@ for (let k = 0; k < stock.length; k++) {
     }
 }
 console.log("Les 2 couleurs  sont : \n"+ color[max]+color[secondmax]);
+
+//Ceci est une sujet de battle dev Isograd
