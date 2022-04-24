@@ -25,3 +25,13 @@ for (let i = 0; i < stock.length; i++) {
         max = i+1;
     }
 }
+//Alana izay max ahazoana n second max
+color.splice(max,1);
+stock.splice(max,1);
+//angalana n second max
+let secondmax = 0;
+for (let k = 0; k < stock.length; k++) {
+    if (stock[k+1] > stock[k]) {
+        secondmax = k+1;
+    }
+}
