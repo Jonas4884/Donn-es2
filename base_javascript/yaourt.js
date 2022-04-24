@@ -35,3 +35,4 @@ for (let k = 0; k < stock.length; k++) {
         secondmax = k+1;
     }
 }
+console.log("Les 2 couleurs  sont : \n"+ color[max]+color[secondmax]);
