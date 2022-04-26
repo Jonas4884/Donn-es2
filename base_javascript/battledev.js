@@ -1,4 +1,4 @@
-//Ceci est une solution d'une battle dev niveau 3 de Isograd
+//Ceci est une solution d'une battle dev niveau 2 de Isograd
 function long(tab) {
     let count=0;
     let temp=[];
@@ -19,5 +19,7 @@ function long(tab) {
         }
     return Math.max(...temp);
 }
-
+//Ceci est une données pour l"exemple
 }
+const tab = [10,5,3,3,4,9,9,9,9,9,6];
+console . log (long(tab));
