@@ -23,3 +23,4 @@ function long(tab) {
 }
 const tab = [10,5,3,3,4,9,9,9,9,9,6];
 console . log (long(tab));
+//Fin de l'algorithme
