@@ -15,6 +15,7 @@ h2{
 }
 .tittled{
     font-size: 1.265em;
+    color: goldenrod;
     font-weight: 600;
     padding: 0.5em 0.4em 0.5em 0.4em;
     margin: 0.125em 0.1em 0.5em 0.4em;
@@ -29,6 +30,7 @@ h2{
     padding: 0;
     margin: auto;
     font-size: 1.2em;
+    color: goldenrod;
     font-weight: 500;
     padding: 0.08em 0.2em 0.3em 0.1em;
     margin: 0.125em 0.1em 0.5em 0.4em;
@@ -36,6 +38,10 @@ h2{
 div.avis{
     text-align: center;
     align-content: center;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 input[type=text]{
     height: 6vh;
