@@ -10,4 +10,6 @@ function index(word,search){
    }
    //Sinon,par principe,on retournera -1 si aucune des nombres ne convient au paramètres
    return -1}
+
+   //Exemple de INPUT et OUTPUT
 console.log(index('word','a'));
