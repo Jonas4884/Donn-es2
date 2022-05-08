@@ -13,3 +13,5 @@ function index(word,search){
 
    //Exemple de INPUT et OUTPUT
 console.log(index('word','a'));
+
+//Fin de l'algorithme

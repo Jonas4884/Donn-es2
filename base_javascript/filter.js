@@ -18,3 +18,5 @@ filtre=(number,search)=>{
 let number=[1,2,3,5,6,8,7,2,4,1,3,2,10]
 //Exemple de INNPUT et OUTPUT
 console.log(filtre(number,5));
+
+//Fin de l'algorithme;
