@@ -13,11 +13,13 @@ function longestSeries(tab){
     throw ("Invalid Value");
 
     //Comptez les occurences
+
+    //Parcourir le tableau donné
 for (let i=0; i<tab.length; i++){
     if(tab[i]==tab[i+1]){
         count++;
     }
-    
+    //Sinon ajouter cette element dans un nouveau tableau
     else{
         temp.push(count);
         count=1;
