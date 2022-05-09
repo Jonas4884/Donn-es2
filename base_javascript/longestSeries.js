@@ -27,5 +27,6 @@ for (let i=0; i<tab.length; i++){
 }
 return Math.max(...temp);
 }
+    //Exemple d'entrée et sortie
 const tab = [10,5,3,3,4,9,9,9,9,9,6];
 console . log (longestSeries(tab));
