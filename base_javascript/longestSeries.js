@@ -1,3 +1,5 @@
+//Cette algorithme a pour but de generer le chiffre ayant le plus d'occurences dans un tableau
+
 export function longestSeries(tab){
     let count=0;
     let temp=[];
