@@ -1,13 +1,18 @@
 //Cette algorithme a pour but de generer le chiffre ayant le plus d'occurences dans un tableau
 
-export function longestSeries(tab){
+function longestSeries(tab){
+    // il nous faut un compteur de valeur et un noveau tableau
     let count=0;
     let temp=[];
     if(tab.length==0){
         return 0;
     }
+
+    //Si le tableau est vide,retourne Invalid value
     if(tab==undefined||tab==null)
     throw ("Invalid Value");
+
+    //Comptez les occurences
 for (let i=0; i<tab.length; i++){
     if(tab[i]==tab[i+1]){
         count++;
