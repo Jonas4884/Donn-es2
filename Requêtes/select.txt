@@ -1,0 +1,89 @@
+/*
+53- Cherchez les clients qui ont reservé pour fianarantsoa (OU UNE VILLE x EN FAIT) 
+*/
+select * from client c inner join reserver r
+inner join ville v on v.nom_ville='fianarantsoa';
+
+/*
+54-Avoir le numéro du chauffeur qui conduisait le vehicule avec le matricule (Matricule) le (date)
+*/
+select contact from chauffeur ch inner join conduire co on ch.id_chauffeur=co.id_chauffeur;
+
+/*55-aficher toutes les depenses de chaque véhicule*/
+
+select * from recevoir;
+
+/*
+56-les passagers les plus fréquents (pour les prix ou offres)
+*/
+
+select * from client c inner join offre o on c.id_client=c.id_offre 
+ORDER BY DESC;
+
+/*
+57-Rechercher quels véhicules ont été conduit par tel ou tel chauffeur
+*/
+select * from conduire,chauffeur;
+
+/*
+58-liste des depenses de chaque vehicule
+*/
+select (CEIL(essence)+maintenance) as depense_par_vehicule from depense;
+
+/*
+59-les infos des chauffeurs absents (qu'est ce qu'un chauffeur absent ? )
+*/
+select * from chauffeur c inner join conduire co on co.id_chauffeur IS NULL;
+
+/*
+60-les depenses de chaque voiture
+*/
+select * from vehicule inner join depense d 
+inner join recevoir r 
+on d.id_depense=r.id_depense;
+
+/*
+61-Depuis quand tel véhicule n'a plus été fonctionnel ou a recommencé à fonctionner
+*/
+select en_marche,en_panne,status from vehicule;
+
+/*
+62-afficher tous les matricule des voitures qui vont à une certaine ville, et leur état. (notion de voyage inclus ?)
+*/
+select v.matricule,id_ville_arrivee as ville,status from voyage v inner join vehicule vh on v.matricule = vh.matricule;
+
+/*
+63 -Quelle destination est la plus prisée donc remporte le plus
+*/
+select MAX(
+COUNT(nom=nom) as plus_prisée from ville;
+
+/*
+64 -les reservations des clients
+*/
+select * from reserver r inner join client c on r.id_client = c.id_client;
+
+/*
+65-nombres d'aller/retour faitent par chaque vehicule en une journée
+*/
+select COUNT(id_ville_depart,id_ville_arrivee) as aller_retour,matricule from voyage  v inner join vehicule vh on v.matricule=vh.matricule;
+
+/*
+66-les voyages annulées a cause du mauvais temps (faudrait penser à comment introduire la notion d'annuler un voyage ?)
+*/
+select * from voyage where temps = 'mauvais';
+
+/*
+67-Le nombre de mineur qui participe a un voyage
+*/
+select COUNT(age<18) as nombre_mineur from client c inner join voyage v on c.id_client = v.id_client;
+
+/*
+68-le nombre de clients
+*/
+select count(select DISTINCT(nom,prenom)) as nombre_client from client;
+
+/*
+69-liste des choix d'offre des clients
+*/
+select DISTINCT(label) as liste_choix from offre o inner join voyage v on o.id_offre = v.id_offre; 
