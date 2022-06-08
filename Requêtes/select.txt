@@ -1,3 +1,26 @@
+
+-- 35 - Le nombre total de voyage prevu a une heure precise dans une ville vers une destination precise
+select count(id_voyage) from reserver where date_reservation IS NOT NULL;
+-- 45 - Liste des vehicules actifs par jours
+select * from vehicule ve inner join reserver r  
+-- 46 -les voitures complets (pour un voyage  ?)
+select * from vehicule  ve inner join reserver r where ve.nb_place=r.place;
+-- 47 - les véhicules qui dépensent le plus et ceux qui sont souvent en panne (consommation d'essence ou réparation)
+select id_vehicule from recevoir r inner join depense inner join vehicule v on 
+-- 48 - Le vehicule qui a le plus gros depense
+select(
+select (max(d.essence)+max(d.maintenance)) as total from depense d inner join recevoir r on d.id_depense=r.id_depense)
+from recevoir
+limit 1;
+-- 49- le nombre de voyage par villes (ville plus fréquentée et moins fréquentée)
+select count(id_ville) as aller,nom_ville as ville from ville vi inner join voyage vo on vo.id_ville_depart=vi.id_ville or vo.id_ville_arrivee=vi.id_ville
+GROUP BY id_ville;
+-- 50- le nombre de voiture en panne (à l'heure actuelle ?)
+select * from vehicule where status=false;
+-- 51-Le nom des chauffeurs qui conduiront l'allerretour (vous prenez en compte la notion d'aller retour ? )
+select nom from chauffeur ch inner join voyage vo inner join conduire co on vo.id_vehicule=co.id_vehicule on ch.id_chauffeur=co.id_chauffeur;
+ -- 52-Combien de voyages ont été effectués tel ou tel jour, à tel ou tel endroit
+ select * from voyage vo inner join ville vi on vo.id_ville_depart=vi.id_ville and vo.id_ville_arrivee=vi.id_ville;
 /*
 53- Cherchez les clients qui ont reservé pour fianarantsoa (OU UNE VILLE x EN FAIT) 
 */
