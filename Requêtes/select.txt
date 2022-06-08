@@ -6,7 +6,9 @@ select * from vehicule ve inner join reserver r
 -- 46 -les voitures complets (pour un voyage  ?)
 select * from vehicule  ve inner join reserver r where ve.nb_place=r.place;
 -- 47 - les véhicules qui dépensent le plus et ceux qui sont souvent en panne (consommation d'essence ou réparation)
-select id_vehicule from recevoir r inner join depense inner join vehicule v on 
+select id_vehicule from recevoir r inner join depense d inner join vehicule v on r.id_vehicule = d.id_vehicule and d.id_vehicule = v.id_vehicule
+order by desc
+limit 1;
 -- 48 - Le vehicule qui a le plus gros depense
 select(
 select (max(d.essence)+max(d.maintenance)) as total from depense d inner join recevoir r on d.id_depense=r.id_depense)
