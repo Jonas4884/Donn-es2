@@ -16,7 +16,7 @@ limit 1;
 select count(id_ville) as aller,nom_ville as ville from ville vi inner join voyage vo on vo.id_ville_depart=vi.id_ville or vo.id_ville_arrivee=vi.id_ville
 GROUP BY id_ville;
 -- 50- le nombre de voiture en panne (à l'heure actuelle ?)
-select * from vehicule where status=false;
+select * from vehicule where status=false in current_timestamp;
 -- 51-Le nom des chauffeurs qui conduiront l'allerretour (vous prenez en compte la notion d'aller retour ? )
 select nom from chauffeur ch inner join voyage vo inner join conduire co on vo.id_vehicule=co.id_vehicule on ch.id_chauffeur=co.id_chauffeur;
  -- 52-Combien de voyages ont été effectués tel ou tel jour, à tel ou tel endroit
@@ -34,7 +34,7 @@ select contact from chauffeur ch inner join conduire co on ch.id_chauffeur=co.id
 
 /*55-aficher toutes les depenses de chaque véhicule*/
 
-select * from recevoir;
+select * from recevoir r inner join depense d on r.id_vehicule=d.id_vehicule;
 
 /*
 56-les passagers les plus fréquents (pour les prix ou offres)
@@ -51,7 +51,7 @@ select * from conduire,chauffeur;
 /*
 58-liste des depenses de chaque vehicule
 */
-select (CEIL(essence)+maintenance) as depense_par_vehicule from depense;
+select ((essence)*4100+maintenance) as depense_par_vehicule from depense;
 
 /*
 59-les infos des chauffeurs absents (qu'est ce qu'un chauffeur absent ? )
