@@ -15,7 +15,7 @@ select (max(d.essence)+max(d.maintenance)) as total from depense d inner join re
 from recevoir
 limit 1;
 -- 49- le nombre de voyage par villes (ville plus fréquentée et moins fréquentée)
-select count(id_ville) as aller,nom_ville as ville from ville vi inner join voyage vo on vo.id_ville_depart=vi.id_ville or vo.id_ville_arrivee=vi.id_ville
+select count(id_ville) as aller,nom_ville as village from ville vi inner join voyage vo on vo.id_ville_depart=vi.id_ville or vo.id_ville_arrivee=vi.id_ville
 GROUP BY id_ville;
 -- 50- le nombre de voiture en panne (à l'heure actuelle ?)
 select * from vehicule where status=false in current_timestamp;
@@ -81,7 +81,7 @@ select v.matricule,id_ville_arrivee as ville,status from voyage v inner join veh
 63 -Quelle destination est la plus prisée donc remporte le plus
 */
 select MAX(
-COUNT(nom=nom) as plus_prisée from ville;
+COUNT(nom=nom)) as plus_prisée from ville;
 
 /*
 64 -les reservations des clients
@@ -106,7 +106,7 @@ select COUNT(age<18) as nombre_mineur from client c inner join voyage v on c.id_
 /*
 68-le nombre de clients
 */
-select count(select DISTINCT(nom,prenom)) as nombre_client from client;
+select count(select DISTINCT(nom,prenom) from client) as nombre_client from client;
 
 /*
 69-liste des choix d'offre des clients
