@@ -10,9 +10,9 @@ select id_vehicule from recevoir r inner join depense d inner join vehicule v on
 order by desc;
 -- 48 - Le vehicule qui a le plus gros depense
 select(
-select (max(d.essence)+max(d.maintenance)) as total from depense d inner join recevoir r on d.id_depense=r.id_depense)
-from recevoir
-limit 1;
+select (max(d.essence),max(d.maintenance)) as total from depense d inner join recevoir r on d.id_depense=r.id_depense)
+from recevoir r inner join depense de on r.id_depense=de.id_depense 
+limit on 1;
 -- 49- le nombre de voyage par villes (ville plus fréquentée et moins fréquentée)
 select count(id_ville) as aller,nom_ville as village from ville vi inner join voyage vo on vo.id_ville_depart=vi.id_ville or vo.id_ville_arrivee=vi.id_ville
 GROUP BY id_ville;
@@ -47,7 +47,7 @@ ORDER BY DESC;
 /*
 57-Rechercher quels véhicules ont été conduit par tel ou tel chauffeur
 */
-select * from conduire,chauffeur;
+select * from conduire c inner join chauffeur ch on c.id_chauffeur=ch.id_chauffeur;
 
 /*
 58-liste des depenses de chaque vehicule
@@ -79,8 +79,7 @@ select v.matricule,id_ville_arrivee as ville,status from voyage v inner join veh
 /*
 63 -Quelle destination est la plus prisée donc remporte le plus
 */
-select MAX(
-COUNT(nom=nom)) as plus_prisée from ville;
+select id_ville_arrivee from voyage GROUP by id_ville_arrivee LIMIT on 1;
 
 /*
 64 -les reservations des clients
@@ -100,7 +99,7 @@ select * from voyage where temps = 'mauvais';
 /*
 67-Le nombre de mineur qui participe a un voyage
 */
-select COUNT(age<18) as nombre_mineur from client c inner join voyage v on c.id_client = v.id_client;
+select COUNT(cin IS NULL) as nombre_mineur from client c inner join voyage v on c.id_client = v.id_client;
 
 /*
 68-le nombre de clients
