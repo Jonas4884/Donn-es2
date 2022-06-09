@@ -2,13 +2,12 @@
 -- 35 - Le nombre total de voyage prevu a une heure precise dans une ville vers une destination precise
 select count(id_voyage) from reserver where date_reservation IS NOT NULL;
 -- 45 - Liste des vehicules actifs par jours
-select * from vehicule ve inner join reserver r  
+select * from vehicule ve inner join reserver r  where vehicule.status='true';
 -- 46 -les voitures complets (pour un voyage  ?)
 select * from vehicule  ve inner join reserver r where ve.nb_place=r.place;
 -- 47 - les véhicules qui dépensent le plus et ceux qui sont souvent en panne (consommation d'essence ou réparation)
 select id_vehicule from recevoir r inner join depense d inner join vehicule v on r.id_vehicule = d.id_vehicule and d.id_vehicule = v.id_vehicule
-order by desc
-limit 1;
+order by desc;
 -- 48 - Le vehicule qui a le plus gros depense
 select(
 select (max(d.essence)+max(d.maintenance)) as total from depense d inner join recevoir r on d.id_depense=r.id_depense)
