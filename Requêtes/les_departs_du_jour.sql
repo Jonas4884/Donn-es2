@@ -1,0 +1,2 @@
+-- les departs du jour
+select id_voyage, date_voyage, heure_dep, nb_place_dispo, label, matricule, nom_ville from voyage vo inner join ville vi on vi.id_ville = vo.id_ville_depart inner join offre o on o.id_offre = vo.id_offre where((extract(hour from heure_dep) >= 4) and (extract(hour from heure_dep) < 20));

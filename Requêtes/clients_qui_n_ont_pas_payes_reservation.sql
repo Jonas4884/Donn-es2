@@ -1,0 +1,2 @@
+-- clients qui n'ont pas payés leurs reservation.
+select c.nom, c.prenom, c.cin, c.contact, date_reservation from reserver r inner join client c on c.id_client = r.id_client where (r.montant_paye = 0);

@@ -1,0 +1,2 @@
+-- Combien de vehicules vont partir pour (ville) demain a (heure)?
+select count(*) from voyage vo inner join ville vi on vi.id_ville = vo.id_ville_depart  where date_voyage = current_date + integer '1' and id_ville = 1 and heure_dep = '07:22:00';
